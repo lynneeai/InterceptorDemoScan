@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{531FA4A0-E161-4DEC-A58B-0E8F12A6E501}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>InterceptorTester</RootNamespace>
+    <AssemblyName>InterceptorTester</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.extensions">
+      <HintPath>..\packages\NUnit.Extensions.2.6.0.0\lib\net40\nunit.extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office365.Discovery">
+      <HintPath>..\packages\Microsoft.Office365.Discovery.1.0.22\lib\portable-net40+sl5+wp8+win8+MonoAndroid10+MonoTouch10+WindowsPhoneApp81\Microsoft.Office365.Discovery.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.0\lib\net45\Nito.AsyncEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.0\lib\net45\Nito.AsyncEx.Concurrent.dll</HintPath>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Enlightenment">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.0\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="API Operations\APIOperation.cs" />
+    <Compile Include="API Operations\DeviceBackup.cs" />
+    <Compile Include="API Operations\DeviceScan.cs" />
+    <Compile Include="API Operations\DeviceSetting.cs" />
+    <Compile Include="API Operations\DeviceStatus.cs" />
+    <Compile Include="API Operations\GenericRequest.cs" />
+    <Compile Include="API Operations\ICmd.cs" />
+    <Compile Include="Data\Scan.cs" />
+    <Compile Include="HTTP\HTTPHandler.cs" />
+    <Compile Include="HTTP\HTTPOperation.cs" />
+    <Compile Include="HTTP\HTTPQuery.cs" />
+    <Compile Include="HTTP\QueryParameter.cs" />
+    <Compile Include="JSON\DeviceBackupJSON.cs" />
+    <Compile Include="JSON\DeviceScanJSON.cs" />
+    <Compile Include="JSON\DeviceScanRequestJSON.cs" />
+    <Compile Include="JSON\DeviceSettingsJSON.cs" />
+    <Compile Include="JSON\DeviceStatusJSON.cs" />
+    <Compile Include="HTTPCalls.cs" />
+    <Compile Include="HTTPSCalls.cs" />
+    <Compile Include="JSON\InterceptorIdJSON.cs" />
+    <Compile Include="Tests\AdminTests\DeviceStatusPutJSON.cs" />
+    <Compile Include="Tests\InterceptorTests\DeviceScanTest.cs" />
+    <Compile Include="Test.cs" />
+    <Compile Include="Data\DemoScans.cs" />
+    <Compile Include="Tests\InterceptorTests\DeviceBackupTest.cs" />
+    <Compile Include="Tests\InterceptorTests\DeviceStatusTest.cs" />
+    <Compile Include="Tests\InterceptorTests\ICmdTest.cs" />
+    <Compile Include="Tests\InterceptorTests\DeviceSettingsTest.cs" />
+    <Compile Include="API Operations\Authenticate.cs" />
+    <Compile Include="JSON\AuthenticateJSON.cs" />
+    <Compile Include="Tests\AdminTests\AuthenticateTest.cs" />
+    <Compile Include="API Operations\Organization.cs" />
+    <Compile Include="JSON\OrganizationJSON.cs" />
+    <Compile Include="Tests\AdminTests\OrganizationTest.cs" />
+    <Compile Include="API Operations\Location.cs" />
+    <Compile Include="JSON\LocationJSON.cs" />
+    <Compile Include="Tests\AdminTests\LocationTest.cs" />
+    <Compile Include="API Operations\Interceptor.cs" />
+    <Compile Include="JSON\InterceptorJSON.cs" />
+    <Compile Include="Tests\PerformanceTests\DeviceBackupPerformanceTest.cs" />
+    <Compile Include="Tests\PerformanceTests\DeviceScanPerformanceTest.cs" />
+    <Compile Include="Tests\PerformanceTests\DeviceStatusPerformanceTest.cs" />
+    <Compile Include="Tests\PerformanceTests\ICmdPerformanceTest.cs" />
+    <Compile Include="Tests\TestGlobals.cs" />
+    <Compile Include="Data\UpcCode.cs" />
+    <Compile Include="Tests\AdminTests\InterceptorTest.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="API Operations\.DS_Store" />
+    <None Include="Data\.DS_Store" />
+    <None Include="Data\mycertificates.cer" />
+    <None Include="Data\mycertificates.crt" />
+    <None Include="Data\unittestcert.pfx" />
+    <None Include="HTTP\.DS_Store" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\.DS_Store" />
+    <None Include="bin\Debug\.DS_Store" />
+    <None Include="bin\Debug\InterceptorTester.dll" />
+    <None Include="bin\Debug\InterceptorTester.dll.config" />
+    <None Include="bin\Debug\InterceptorTester.dll.mdb" />
+    <None Include="bin\Debug\Json.dll" />
+    <None Include="bin\Debug\Microsoft.Office365.Discovery.dll" />
+    <None Include="bin\Debug\Newtonsoft.Json.dll" />
+    <None Include="bin\Debug\Nito.AsyncEx.Concurrent.dll" />
+    <None Include="bin\Debug\Nito.AsyncEx.Enlightenment.dll" />
+    <None Include="bin\Debug\Nito.AsyncEx.dll" />
+    <None Include="bin\Debug\System.Net.Http.Extensions.dll" />
+    <None Include="bin\Debug\System.Net.Http.Formatting.dll" />
+    <None Include="bin\Debug\System.Net.Http.Primitives.dll" />
+    <None Include="bin\Debug\System.Web.Http.WebHost.dll" />
+    <None Include="bin\Debug\System.Web.Http.dll" />
+    <None Include="bin\Debug\nunit.extensions.dll" />
+    <None Include="bin\Debug\nunit.framework.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <ItemGroup>
+    <Folder Include="Data\ConfigurationSections\" />
+  </ItemGroup>
+</Project>
