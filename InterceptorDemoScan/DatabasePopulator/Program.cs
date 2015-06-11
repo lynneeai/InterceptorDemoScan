@@ -19,14 +19,23 @@ namespace DatabasePopulator
 		static StreamWriter results;
 		public static int seqNum;
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            ConsoleApplication1.TestGlobals.setup();
+            Console.WriteLine("Starting demo scan generator");
+            try
+            {
+                ConsoleApplication1.TestGlobals.setup();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
             generateScans();
         }
 
         private static async void generateScans()
         {
+            Console.WriteLine("Generating scans");
 			int[] pseudoRandDelay = {60, 120, 240, 60};
 			int[] pseudoRandBasket = {10,9,8,7,6,5,4,3,2,1,5,6,7,8,9,1,2,3,4,10,6,5,4,3,2,10,9,8,7,1};
 
@@ -38,9 +47,22 @@ namespace DatabasePopulator
 			DateTime started1 = DateTime.Now;
 
 			FileStream stream;
-			stream = File.OpenWrite(logFile);
-			results = new StreamWriter(stream);
-
+            try
+            {
+                stream = File.Create(logFile);
+                results = new StreamWriter(stream);
+            }
+            catch (DirectoryNotFoundException)
+            {
+                Directory.CreateDirectory("../../../logs/");
+                stream = File.Create(logFile);
+                results = new StreamWriter(stream);
+            }
+            catch (IOException e)
+            {
+                Console.WriteLine(e);
+            }
+            Console.WriteLine("Demo data: ");
 			Console.WriteLine (TestGlobals.demoServer);
 			Console.WriteLine (TestGlobals.demoSerial);
 
