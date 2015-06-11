@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Nito.AsyncEx;
-using ConsoleApplication1;
+using InterceptorTester;
 using System.IO;
 
 namespace DatabasePopulator
 {
     class Program
     {
-        static List<ConsoleApplication1.Test> basket = new List<ConsoleApplication1.Test>();
+        static List<InterceptorTester.Test> basket = new List<InterceptorTester.Test>();
 		static int basketNum;
 		static int scanNum;
 		static int totalScan;
@@ -24,7 +24,7 @@ namespace DatabasePopulator
             Console.WriteLine("Starting demo scan generator");
             try
             {
-                ConsoleApplication1.TestGlobals.setup();
+                InterceptorTester.TestGlobals.setup();
             }
             catch (Exception e)
             {
@@ -76,14 +76,14 @@ namespace DatabasePopulator
 
 					scanNum = 0;
 
-                    foreach (ConsoleApplication1.Test nextScan in basket)
+                    foreach (InterceptorTester.Test nextScan in basket)
                     {
 						Console.WriteLine("Posting Scan");
 						Console.WriteLine(DateTime.Now.ToString ("yyyy-MM-dd hh:mm:ss.ffffff"));
 
 						results.WriteLine ("Posting Scan");
 						results.WriteLine (DateTime.Now.ToString ("yyyy-MM-dd hh:mm:ss.ffffff"));
-						AsyncContext.Run(async () => await new ConsoleApplication1.HTTPSCalls().runTest(nextScan, ConsoleApplication1.HTTPOperation.POST));
+						AsyncContext.Run(async () => await new InterceptorTester.HTTPSCalls().runTest(nextScan, InterceptorTester.HTTPOperation.POST));
 
 						Console.WriteLine ("Scan posted:");
 						Console.WriteLine(DateTime.Now.ToString ("yyyy-MM-dd hh:mm:ss.ffffff"));
@@ -156,10 +156,10 @@ namespace DatabasePopulator
 			results.Close ();
         }
 
-		private static List<ConsoleApplication1.Test> getBasket(int basketType, int s)
+		private static List<InterceptorTester.Test> getBasket(int basketType, int s)
         {
             basket.Clear();
-            ConsoleApplication1.DemoScans scanGen = new ConsoleApplication1.DemoScans();
+            InterceptorTester.DemoScans scanGen = new InterceptorTester.DemoScans();
 
             switch (basketType)
             {
