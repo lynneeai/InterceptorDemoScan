@@ -228,18 +228,4 @@ pip-log.txt
 *.ConsoleApplication1/obj/Debug/ConsoleApplication1.exe
 ConsoleApplication1/bin/Debug/ConsoleApplication1.pdb
 packages/*
-logs/testResults.txt
-DatabasePopulator/DatabasePopulator.csproj
-DatabasePopulator/DatabasePopulator.csproj
-logs/PerformanceTestAnalysis.ods
-logs/testLog.txt
-<<<<<<< HEAD
-
-logs/OSXtestResults130779978234317050.txt
-
-*.txt
-
-logs/OSXtestResults130779978232105540.txt
-=======
 logs/*
->>>>>>> origin/master
