@@ -44,7 +44,7 @@ namespace ConsoleApplication1
 				validSerial = ConfigurationManager.ConnectionStrings["ValidSerial"].ConnectionString;
 				//demoSerial = ConfigurationManager.ConnectionStrings["DemoSerial"].ConnectionString;
 
-				demoSerial = "D05FB84F2A56";
+				demoSerial = "D05FB84F1532";
 
 				invalidSerial = ConfigurationManager.ConnectionStrings["InvalidSerial"].ConnectionString;
 				delay = int.Parse(ConfigurationManager.ConnectionStrings["DelayBetweenRuns"].ConnectionString);

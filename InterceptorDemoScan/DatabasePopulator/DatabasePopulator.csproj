@@ -67,12 +67,6 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <ProjectReference Include="..\InterceptorTester\InterceptorTester.csproj">
-      <Project>{531FA4A0-E161-4DEC-A58B-0E8F12A6E501}</Project>
-      <Name>InterceptorTester</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -80,4 +74,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <ItemGroup>
+    <ProjectReference Include="..\InterceptorTester\InterceptorTester.csproj">
+      <Project>{531FA4A0-E161-4DEC-A58B-0E8F12A6E501}</Project>
+      <Name>InterceptorTester</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

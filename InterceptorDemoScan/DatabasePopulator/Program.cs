@@ -11,7 +11,7 @@ namespace DatabasePopulator
 {
     class Program
     {
-        static List<InterceptorTester.Test> basket = new List<InterceptorTester.Test>();
+		static List<ConsoleApplication1.Test> basket = new List<ConsoleApplication1.Test>();
 		static int basketNum;
 		static int scanNum;
 		static int totalScan;
@@ -24,7 +24,7 @@ namespace DatabasePopulator
             Console.WriteLine("Starting demo scan generator");
             try
             {
-                InterceptorTester.TestGlobals.setup();
+                ConsoleApplication1.TestGlobals.setup();
             }
             catch (Exception e)
             {
@@ -63,8 +63,8 @@ namespace DatabasePopulator
                 Console.WriteLine(e);
             }
             Console.WriteLine("Demo data: ");
-			Console.WriteLine (TestGlobals.demoServer);
-			Console.WriteLine (TestGlobals.demoSerial);
+			Console.WriteLine (ConsoleApplication1.TestGlobals.demoServer);
+			Console.WriteLine (ConsoleApplication1.TestGlobals.demoSerial);
 
 			foreach (int delay in pseudoRandDelay)
             {
@@ -76,14 +76,14 @@ namespace DatabasePopulator
 
 					scanNum = 0;
 
-                    foreach (InterceptorTester.Test nextScan in basket)
+					foreach (ConsoleApplication1.Test nextScan in basket)
                     {
 						Console.WriteLine("Posting Scan");
 						Console.WriteLine(DateTime.Now.ToString ("yyyy-MM-dd hh:mm:ss.ffffff"));
 
 						results.WriteLine ("Posting Scan");
 						results.WriteLine (DateTime.Now.ToString ("yyyy-MM-dd hh:mm:ss.ffffff"));
-						AsyncContext.Run(async () => await new InterceptorTester.HTTPSCalls().runTest(nextScan, InterceptorTester.HTTPOperation.POST));
+						AsyncContext.Run(async () => await new ConsoleApplication1.HTTPSCalls().runTest(nextScan, ConsoleApplication1.HTTPOperation.POST));
 
 						Console.WriteLine ("Scan posted:");
 						Console.WriteLine(DateTime.Now.ToString ("yyyy-MM-dd hh:mm:ss.ffffff"));
@@ -156,67 +156,67 @@ namespace DatabasePopulator
 			results.Close ();
         }
 
-		private static List<InterceptorTester.Test> getBasket(int basketType, int s)
+		private static List<ConsoleApplication1.Test> getBasket(int basketType, int s)
         {
             basket.Clear();
-            InterceptorTester.DemoScans scanGen = new InterceptorTester.DemoScans();
+			ConsoleApplication1.DemoScans scanGen = new ConsoleApplication1.DemoScans();
 
             switch (basketType)
             {
                 case 1:
-					basket.Add(DemoScans.getScan(UpcCode.Laptop11Inch, s));
-					basket.Add(DemoScans.getScan(UpcCode.Headset, s + 1));
-					basket.Add(DemoScans.getScan(UpcCode.LaptopCase11Inch, s + 2));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Laptop11Inch, s));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Headset, s + 1));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.LaptopCase11Inch, s + 2));
                     break;
                 case 2:
-                    basket.Add(DemoScans.getScan(UpcCode.Laptop13Inch, s));
-					basket.Add(DemoScans.getScan(UpcCode.Mouse, s + 1));
-					basket.Add(DemoScans.getScan(UpcCode.LaptopCase13Inch, s + 2));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Laptop13Inch, s));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Mouse, s + 1));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.LaptopCase13Inch, s + 2));
                     break;
                 case 3:
-                    basket.Add(DemoScans.getScan(UpcCode.Printer, s));
-					basket.Add(DemoScans.getScan(UpcCode.UsbCable, s + 1));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Printer, s));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.UsbCable, s + 1));
                     break;
                 case 4:
-                    basket.Add(DemoScans.getScan(UpcCode.Laptop13Inch, s));
-					basket.Add(DemoScans.getScan(UpcCode.LaptopCase13Inch, s + 1));
-					basket.Add(DemoScans.getScan(UpcCode.Warranty, s + 2));
-					basket.Add(DemoScans.getScan(UpcCode.ExternalHDD, s + 3));
-					basket.Add(DemoScans.getScan(UpcCode.Headset, s + 4));
-					basket.Add(DemoScans.getScan(UpcCode.Mouse, s + 5));
-					basket.Add(DemoScans.getScan(UpcCode.Keyboard, s + 6));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Laptop13Inch, s));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.LaptopCase13Inch, s + 1));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Warranty, s + 2));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.ExternalHDD, s + 3));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Headset, s + 4));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Mouse, s + 5));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Keyboard, s + 6));
                     break;
                 case 5:
-					basket.Add(DemoScans.getScan(UpcCode.ExternalHDD, s + 7));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.ExternalHDD, s + 7));
                     break;
                 case 6:
-					basket.Add(DemoScans.getScan(UpcCode.Keyboard, s));
-					basket.Add(DemoScans.getScan(UpcCode.UsbCable, s + 1));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Keyboard, s));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.UsbCable, s + 1));
                     break;
                 case 7:
-                    basket.Add(DemoScans.getScan(UpcCode.Speakers, s));
-					basket.Add(DemoScans.getScan(UpcCode.Headset, s + 1));
-					basket.Add(DemoScans.getScan(UpcCode.UsbCable, s + 2));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Speakers, s));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Headset, s + 1));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.UsbCable, s + 2));
                     break;
                 case 8:
-					basket.Add(DemoScans.getScan(UpcCode.Mouse, s));
-					basket.Add(DemoScans.getScan(UpcCode.UsbCable, s + 1));
-					basket.Add(DemoScans.getScan(UpcCode.Earbuds, s + 2));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Mouse, s));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.UsbCable, s + 1));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Earbuds, s + 2));
                     break;
                 case 9:
-                    basket.Add(DemoScans.getScan(UpcCode.HdmiCable, s));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.HdmiCable, s));
                     break;
                 case 10:
-                    basket.Add(DemoScans.getScan(UpcCode.ExternalHDD, s));
-					basket.Add(DemoScans.getScan(UpcCode.UsbCable, s + 1));
-					basket.Add(DemoScans.getScan(UpcCode.Keyboard, s + 2));
-					basket.Add(DemoScans.getScan(UpcCode.Earbuds, s + 3));
-					basket.Add(DemoScans.getScan(UpcCode.Speakers, s + 4));
-					basket.Add(DemoScans.getScan(UpcCode.Mouse, s + 5));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.ExternalHDD, s));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.UsbCable, s + 1));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Keyboard, s + 2));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Earbuds, s + 3));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Speakers, s + 4));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.Mouse, s + 5));
                     break;
                 default:
-					basket.Add(DemoScans.getScan(UpcCode.ExternalHDD, s));
-					basket.Add(DemoScans.getScan(UpcCode.UsbCable, s + 1));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.ExternalHDD, s));
+				basket.Add(ConsoleApplication1.DemoScans.getScan(ConsoleApplication1.UpcCode.UsbCable, s + 1));
                     break;
             }
 				
